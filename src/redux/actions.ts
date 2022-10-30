@@ -19,9 +19,9 @@ export const ChangeCurrencyFieldAC = (
   } as const;
 };
 
-export type ChangeActionType = ReturnType<typeof ChangeActionAC>;
+export type ChangeActionType = ReturnType<typeof changeActionAC>;
 
-export const ChangeActionAC = (isBuying: boolean) => {
+export const changeActionAC = (isBuying: boolean) => {
   return {
     type: ACTIONS_TYPE.CHANGE_CHANGE_ACTION,
     payload: {

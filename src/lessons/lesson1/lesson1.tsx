@@ -1,5 +1,5 @@
-import React from 'react';
-import CurrencyExchangeContainer from '../../containers/CurrencyExchangeContainer/CurrencyEContainer'
+import React from "react";
+import { CurrencyEContainer } from "../../containers/CurrencyExchangeContainer/CurrencyEContainer";
 
 // Redux
 // https://tproger.ru/translations/redux-for-beginners/
@@ -20,12 +20,11 @@ import CurrencyExchangeContainer from '../../containers/CurrencyExchangeContaine
 // https://react-redux.js.org/using-react-redux/connect-mapdispatch
 
 const Lesson1: React.FunctionComponent = () => {
-    return (
+  return (
     <React.Fragment>
-        <CurrencyExchangeContainer />
+      <CurrencyEContainer />
     </React.Fragment>
   );
 };
 
 export default Lesson1;
-
