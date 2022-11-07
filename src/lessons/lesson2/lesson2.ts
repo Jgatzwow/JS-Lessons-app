@@ -1,4 +1,4 @@
-console.log('lesson 2');
+console.log("lesson 2");
 
 // Lexical environment
 // http://jsflow.org/docs/lex-env/
@@ -20,12 +20,39 @@ console.log('lesson 2');
 // https://learn.javascript.ru/recursion
 // https://www.youtube.com/watch?v=Kuq6oIN3PH0
 
-
 // Task 01
 // Реализовать функцию sum которая суммирует 2 числа следующим образом sum(3)(6) === 9
+// @ts-ignore
+const sumCurry = (func) => {
+  return function (a: number) {
+    return function (b: number) {
+      return func(a, b);
+    };
+  };
+};
 
+const sum = (a: number, b: number) => {
+  return a + b;
+};
+
+const curriedSum = sumCurry(sum);
+console.log(curriedSum(3)(6));
+console.log(sumCurry(sum)(3)(6));
 // Task 02
 // Реализовать функцию makeCounter которая работает следующим образом:
+const makeCounter = () => {
+  let count = 1;
+  return () => {
+    return count++;
+  };
+};
+const counter = makeCounter();
+console.log(counter());
+console.log(counter());
+const counter2 = makeCounter();
+console.log(counter2());
+console.log(counter());
+
 // const counter = makeCounter();
 // counter(); // 1
 // counter(); // 2
@@ -36,6 +63,26 @@ console.log('lesson 2');
 // Task 03
 // Переписать функцию из Task 02 так, что бы она принимала число в качестве аргумента и это число было стартовым значением счетчика
 // и возвращала следующий объект методов:
+/*const makeCounter = (startVal) => {
+    let count = startVal
+    const funcObj = {
+        increase() {
+            return count++
+        },
+        decrease() {
+            return count--
+        },
+        reset() {
+            return count = 0
+        },
+        set(desiredVal) {
+            return count = desiredVal
+        }
+    }
+    return () => {
+        return funcObj
+    }
+}
 // increase: +1
 // decrease: -1
 // reset: установить счетчик в 0;
