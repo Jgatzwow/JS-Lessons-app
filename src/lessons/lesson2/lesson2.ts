@@ -91,6 +91,35 @@ console.log(counter());
 // Task 04*
 // Реализовать функцию superSum которая принимает число в качестве аргумента, которое указывает на количество слагаемых
 // и что бы корректно работали следующие вызовы:
+
+function superSum(n: number) {
+    debugger
+    if (n === 0) return 0;
+    if (n === 1) return (num : number) => num;
+
+    let _arguments: number[] = [];
+
+    function helper(...args) {
+        debugger
+        _arguments = [..._arguments, ...args];
+        if (_arguments.length >= n) {
+            _arguments.length = n;
+            return _arguments.reduce((acc, number) => acc + number)
+        } else {
+            return helper;
+        }
+    }
+
+    return helper;
+}
+
+console.log(superSum(0)) //0
+console.log(superSum(2)(2)(5, 9)) //10
+console.log(superSum(3)(2)(5, 3)) //10
+console.log(superSum(3)(2, 5, 3)) //10
+console.log(superSum(3)(2, 5)(3)) //10
+console.log(superSum(3)(2, 5)(3)(9)) //10
+ */
 // 1) superSum(0) //0
 // 2) superSum(3)(2)(5)(3) //10
 // 3) superSum(3)(2)(5,3) //10
@@ -101,8 +130,71 @@ console.log(counter());
 // P.S. типизируйте только аргументы, а при вызове функции используйте @ts-ignore
 
 // Task 05
-// решить все задачи по рекурсии которые даны в конце статьи https://learn.javascript.ru/recursion
 
+// sumTo(1) = 1
+// sumTo(2) = 2 + 1 = 3
+// sumTo(3) = 3 + 2 + 1 = 6
+// sumTo(4) = 4 + 3 + 2 + 1 = 10
+// ...
+// sumTo(100) = 100 + 99 + ... + 2 + 1 = 5050
+
+// решить все задачи по рекурсии которые даны в конце статьи https://learn.javascript.ru/recursion
+/*const sumTo = (num) => {
+    if (num === 1) {
+        return num
+    } else {
+        return num + sumTo(num -1 )
+    }
+}*/
+
+/*
+const sumTo = (num) => {
+    let count = 0
+    for (let i = 0; i <= num; i++) {
+        count +=i
+    }
+    return count
+}
+*/
+
+/*const sumTo = (num) => {
+    return num * (num + 1) / 2
+}*/
+/*const factorial = (n)=> {
+    if (n === 1) {
+        return n
+    } else {
+        return n * factorial(n-1)
+    }
+}*/
+/*const factorial = (n) => {
+    let count = 1
+    for (let i = 1; i <= n; i++) {
+        count = count * i
+    }
+    return count
+}*/
+
+/*
+function fib(n) {
+    return n <= 1 ? n : fib(n - 1) + fib(n - 2);
+}
+*/
+
+/*
+function fib(n) {
+    debugger
+    let a = 1;
+    let b = 1;
+    for (let i = 3; i <= n; i++) {
+        debugger
+        let c = a + b;
+        a = b;
+        b = c;
+    }
+    return b;
+}
+*/
 // Task 06
 // написать функцию, которая повторяет функционал метода flat массива на всю глубину.
 
